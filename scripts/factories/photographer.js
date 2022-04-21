@@ -40,6 +40,6 @@ function photographerFactory(data) {
     //    this._tagline = data.tagline
     //    this._tags = data.tags
 
-    }
+   // }
    
-}
+//}
