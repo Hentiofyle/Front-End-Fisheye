@@ -1,20 +1,21 @@
-   async function getPhotographers() {
- 
-   await fetch('http://localhost:5501/data/photographers.json')
-    .then(function (res){
-        if(res.ok){
-            return res.json()
-        }
-     }
 
-    .then(function(data){
-           
-        data.photographer.forEach((photographer) => {
-                let photographerModel = new Photographer(photographer);
-                element.innerHTML += photographerModel.getUserCardDOM(); 
-            });
+//import {photographerFactory} from "./photographer.js"
 
-}
+
+    async function getPhotographers() {
+    let url = 'data/photographers.json';
+    let response = await fetch(url);
+    let data = await response.json();
+
+    const dataPhotographers = [...data.photographers];
+    const dataMedias = [...data.media];
+
+    return {
+        'photographers': dataPhotographers,
+        'media': dataMedias
+    };
+
+   }
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
@@ -32,5 +33,5 @@
         displayData(photographers);
     };
     
-    init();
+init();
     
